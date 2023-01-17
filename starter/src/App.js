@@ -4,7 +4,7 @@ import { ReactDOM } from "react";
 import { useEffect, useState } from "react";
 import SearchBooks from "./components/SearchBooks";
 import Shelves from "./components/Shelves";
-import {Route,Link} from "react-router-dom";
+import {Routes,Route,BrowserRouter} from "react-router-dom";
 import MyReadsHeader from "./components/MyReadsHeader";
 import * as BooksAPI from "./BooksAPI";
 
@@ -342,16 +342,6 @@ function App() {
     });
   },[]);
 
-  // const router= createBrowserRouter([
-  //   {
-  //     path:"/Search",
-  //     element:<SearchBooks />
-  //   },
-  //   {
-  //     path:"/",
-  //     element:<App/>
-  //   }
-  // ]);
   const shelves = [
     {
       title:"Currently Reading",
@@ -376,17 +366,21 @@ function App() {
  
   return (
     <div className="app">
-      <Route path="/search" render={()=><SearchBooks book={books} />} />
+     
       {/* {showSearchPage ? ( */}
         
       {/* ) : ( */}
         <div className="list-books">
-          <MyReadsHeader />
-          
-          <Route exact path="/" render={()=> <Shelves shelves={shelves} books={books}/> } />
-          {/* <div className="open-search">
-            <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
-          </div> */}
+          <BrowserRouter>
+            <MyReadsHeader />
+            <Routes>
+              <Route path="/search" render={()=><SearchBooks book={books} />} />
+              <Route exact path="/" render={()=> <Shelves shelves={shelves} books={books}/> } />
+            {/* <div className="open-search">
+              <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
+            </div> */}
+            </Routes>
+          </BrowserRouter>
         </div>
       {/* )} */}
     </div>
