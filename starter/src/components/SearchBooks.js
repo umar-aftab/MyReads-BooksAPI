@@ -1,4 +1,6 @@
-const SearchBooks=()=>{
+import React from "react";
+
+const SearchBooks=({books})=>{
     return(
         <div className="search-books">
         <div className="search-books-bar">
