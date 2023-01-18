@@ -1,14 +1,18 @@
 import React from "react";
 import BookList from "./BookList";
 
-const Shelves=({shelves,books})=>{
+const Shelves=({books,shelves,moveBook})=>{
+    const bookSelector=(books,shelf)=>{
+        const sortedBks= books.filter(book=>book.shelf === shelf);
+        return sortedBks;
+    };
     return(
-            <div className="list-books-content"> 
+            <div>
                 {
                     shelves.map((shel)=>
                             <div className="bookshelf">
                                 <h2 className="bookshelf-title">{shel.title}</h2>
-                                <BookList key={shel.key} booklist={books.filter(book=>book.shelf === shel.shelf)} shelf={shel}/>
+                                <BookList booklist={bookSelector(books,shel.shelf)} shelf={shel} moveBook={moveBook}/>
                             </div>        
                     )
                 }            

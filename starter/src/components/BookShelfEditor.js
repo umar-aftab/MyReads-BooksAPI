@@ -1,11 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
 
-const BookShelfEditor=({book,shelf})=>{
-    useEffect(()=>{console.log( book, shelf)},[])
+const BookShelfEditor=({book,shelf,moveBook})=>{
+
     return(
         <div className="book-shelf-changer">
-        <select value={shelf.shelf} onChange={()=>console.log("BookShelfEditor")}>
+        <select value={shelf.shelf} onChange={(e)=>{ moveBook(book,e.target.value)}}>
           <option value="none" disabled>
             Move to...
           </option>
