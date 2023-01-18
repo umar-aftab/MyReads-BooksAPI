@@ -3,7 +3,6 @@ import Shelves from "./Shelves";
 import { Link } from "react-router-dom";
 
 const MyReadsHeader=({shelves,books,moveBook})=>{
-    const [showSearchPage,setShowSearchPage]=useState(false);
     return(
         <div className="list-books">
             <div className="list-books-title">
