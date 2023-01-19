@@ -48,9 +48,11 @@ function App() {
       return b;
     });
     setBooks(booksUpdated);
+    BooksAPI.update(book,shelf).then(data=>console.log(data));
   };
 
   const getBook=(findBook)=>{
+    console.log(findBook);
     setFindBook(findBook);
 
   };
