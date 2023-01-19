@@ -12,7 +12,7 @@ const BookShelfEditor=({book,moveBook})=>{
     return(
         <div className="book-shelf-changer">
         <select value={bookShelf ? bookShelf : "none"} onChange={moveBookDynamically}>
-          <option value="none" disabled>
+          <option value="move" disabled>
             Move to...
           </option>
           <option value="currentlyReading">Currently Reading</option>
