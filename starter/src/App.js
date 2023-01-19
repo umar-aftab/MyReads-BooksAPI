@@ -9,8 +9,6 @@ import * as BooksAPI from "./BooksAPI";
 function App() {
   const[books,setBooks]= useState([]);
   const[searchBooks,setSearchBooks] = useState([]);
-  const[findBook,setFindBook]=useState("");
-
 
   useEffect(()=>{
     BooksAPI.getAll()
@@ -51,29 +49,26 @@ function App() {
     BooksAPI.update(book,shelf).then(data=>console.log(data));
   };
 
-  const getBook=(findBook)=>{
-    console.log(findBook);
-    setFindBook(findBook);
-
-  };
-  
   const bookSearch=(book)=>{
     BooksAPI.search(book).then(data=>{
       if(data.error){
-        console.log(data);
+        setSearchBooks([]);
       }else{
         setSearchBooks(data);
       }
 
-    });
-    
+    });  
   };
+
+  const resetSearch=()=>{
+    setSearchBooks([]);
+  }
 
   return (
     <div className="app">      
           <BrowserRouter>
             <Routes>
-              <Route path="/search" element={<SearchBooks moveBook={moveBook} findBook={getBook} bookSearch={bookSearch} searchBooks={searchBooks}/>} />
+              <Route path="/search" element={<SearchBooks moveBook={moveBook} bookSearch={bookSearch} searchBooks={searchBooks} resetSearch={resetSearch}/>} />
               <Route exact path="/" element={<MyReadsHeader shelves={shelves} books={books} moveBook={moveBook} />} />
             </Routes>
           </BrowserRouter>

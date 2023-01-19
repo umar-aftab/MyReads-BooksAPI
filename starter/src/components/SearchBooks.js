@@ -1,20 +1,30 @@
 import React from "react";
 import SearchResults from "./SearchResults";
 import {Link} from "react-router-dom";
+import { useState } from "react";
 
-const SearchBooks=({moveBook,findBook,bookSearch,searchBooks})=>{
+const SearchBooks=({moveBook,bookSearch,searchBooks,resetSearch})=>{
+   const[val,setVal]=useState("");
+   const searchDynamic=(event)=>{
+    
+      const newValue=event.target.value;
+      setVal(newValue);
+      if(newValue.length >=1){
+        bookSearch(event.target.value);
+      }
+   };
 
     return(<div className="search-books">
         <div className="search-books-bar">
           <Link to="/">
-              <button className="close-search">Close</button>
+              <button className="close-search" onClick={resetSearch}>Close</button>
           </Link>
           <div className="search-books-input-wrapper">
               <input
                   type="text"
                   placeholder="Search by title, author, or ISBN"
-                  value={findBook}
-                  onChange={(event)=>bookSearch(event.target.value)}
+                  value={val}
+                  onChange={searchDynamic}
                   autoFocus
               />
           </div>
