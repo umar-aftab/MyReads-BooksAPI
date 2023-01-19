@@ -7,7 +7,7 @@ const BookList=({booklist,shelf,moveBook})=>{
           {
             booklist.map(bk=>
                 <li key={bk.id}>
-                    <Book book={bk} shelf={shelf.shelf} moveBook={moveBook}/>
+                    <Book book={bk} shelf={bk.shelf} moveBook={moveBook}/>
                 </li>
             )
           }

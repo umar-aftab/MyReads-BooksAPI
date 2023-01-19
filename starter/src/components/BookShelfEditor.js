@@ -1,16 +1,21 @@
 import React from "react";
+import { useState } from "react";
 
 const BookShelfEditor=({book,shelf,moveBook})=>{
+  const[bookShelf,setBookShelf]= useState(book.shelf);
+  const moveBookDynamically=(event)=>{
+    const newShelf=event.target.value;
+    setBookShelf(newShelf);
+    moveBook(book,newShelf);
+  };
 
     return(
         <div className="book-shelf-changer">
-        <select value={shelf.shelf} onChange={(e)=>{ moveBook(book,e.target.value)}}>
+        <select value={bookShelf ? bookShelf : "none"} onChange={moveBookDynamically}>
           <option value="none" disabled>
             Move to...
           </option>
-          <option value="currentlyReading">
-            Currently Reading
-          </option>
+          <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
           <option value="read">Read</option>
           <option value="none">None</option>

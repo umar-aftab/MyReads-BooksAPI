@@ -3,15 +3,12 @@ import SearchResults from "./SearchResults";
 import {Link} from "react-router-dom";
 import { useState } from "react";
 
-const SearchBooks=({moveBook,bookSearch,searchBooks,resetSearch})=>{
+const SearchBooks=({myBooks,moveBook,bookSearch,searchBooks,resetSearch})=>{
    const[val,setVal]=useState("");
    const searchDynamic=(event)=>{
-    
       const newValue=event.target.value;
       setVal(newValue);
-      if(newValue.length >=1){
-        bookSearch(event.target.value);
-      }
+      bookSearch(event.target.value);
    };
 
     return(<div className="search-books">
@@ -29,7 +26,7 @@ const SearchBooks=({moveBook,bookSearch,searchBooks,resetSearch})=>{
               />
           </div>
         </div>
-      <SearchResults books={searchBooks} shelf={null} moveBook={moveBook}/>
+      <SearchResults myBooks={myBooks} searchBooks={searchBooks} moveBook={moveBook}/>
     </div>
     );
     

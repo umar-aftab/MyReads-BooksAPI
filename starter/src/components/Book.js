@@ -10,10 +10,10 @@ const Book=({book,shelf,moveBook})=>{
                   style={{
                     width: 128,
                     height: 193,
-                    backgroundImage:`url(${book.imageLinks.thumbnail})`,
+                    backgroundImage:`url(${book.imageLinks?.thumbnail})`,
                   }}
                 ></div>
-                <BookShelfEditor key={book.id} book={book} shelf={shelf} moveBook={moveBook}/>
+                <BookShelfEditor key={book.id} book={book} shelf={book.shelf ? book.shelf : "none"} moveBook={moveBook}/>
 
               </div>
               <div className="book-title">{book.title}</div>

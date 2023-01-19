@@ -16,7 +16,7 @@ function App() {
       //console.log(books);
       setBooks(books);
     }).catch((e)=>{
-      console.log(e);
+      //console.log(e);
     });
   },[]);
 
@@ -50,14 +50,20 @@ function App() {
   };
 
   const bookSearch=(book)=>{
-    BooksAPI.search(book).then(data=>{
-      if(data.error){
-        setSearchBooks([]);
-      }else{
-        setSearchBooks(data);
-      }
-
-    });  
+    if(!book.trim()){
+      setSearchBooks([]);
+    }
+    if(book.length>0){
+      BooksAPI.search(book).then(data=>{
+        if(data.error){
+          setSearchBooks([]);
+        }else{
+          setSearchBooks(data);
+        }
+      });
+    }else{
+      setSearchBooks([]);
+    }  
   };
 
   const resetSearch=()=>{
@@ -68,7 +74,7 @@ function App() {
     <div className="app">      
           <BrowserRouter>
             <Routes>
-              <Route path="/search" element={<SearchBooks moveBook={moveBook} bookSearch={bookSearch} searchBooks={searchBooks} resetSearch={resetSearch}/>} />
+              <Route path="/search" element={<SearchBooks myBooks={books} moveBook={moveBook} bookSearch={bookSearch} searchBooks={searchBooks} resetSearch={resetSearch}/>} />
               <Route exact path="/" element={<MyReadsHeader shelves={shelves} books={books} moveBook={moveBook} />} />
             </Routes>
           </BrowserRouter>
