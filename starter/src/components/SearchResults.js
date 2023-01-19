@@ -16,7 +16,7 @@ const SearchResults=({myBooks,searchBooks,moveBook})=>{
             <ol className="books-grid">
                 {
                     changedBooks.map((book)=>
-                        <Book key={book.id} book={book} shelf={book.shelf ? book.shelf: 'none'} moveBook={moveBook} />
+                        <Book key={book.id} book={book} moveBook={moveBook} />
                     )
                 };
             </ol>

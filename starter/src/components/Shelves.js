@@ -10,9 +10,9 @@ const Shelves=({books,shelves,moveBook})=>{
             <div>
                 {
                     shelves.map((shel)=>
-                            <div className="bookshelf" key={shel.id}>
+                            <div className="bookshelf" key={Math.random()}>
                                 <h2 className="bookshelf-title">{shel.title}</h2>
-                                <BookList booklist={bookSelector(books,shel.shelf)} shelf={shel} moveBook={moveBook}/>
+                                <BookList key={shel.id} booklist={bookSelector(books,shel.shelf)} moveBook={moveBook}/>
                             </div>        
                     )
                 }            

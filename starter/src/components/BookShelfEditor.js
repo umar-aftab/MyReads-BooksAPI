@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const BookShelfEditor=({book,shelf,moveBook})=>{
+const BookShelfEditor=({book,moveBook})=>{
   const[bookShelf,setBookShelf]= useState(book.shelf);
   const moveBookDynamically=(event)=>{
     const newShelf=event.target.value;

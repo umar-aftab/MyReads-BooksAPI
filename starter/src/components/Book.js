@@ -1,7 +1,7 @@
 import React from "react";
 import BookShelfEditor from "./BookShelfEditor";
 
-const Book=({book,shelf,moveBook})=>{
+const Book=({book,moveBook})=>{
     return(
         <div className="book">
               <div className="book-top">
@@ -13,7 +13,7 @@ const Book=({book,shelf,moveBook})=>{
                     backgroundImage:`url(${book.imageLinks?.thumbnail})`,
                   }}
                 ></div>
-                <BookShelfEditor key={book.id} book={book} shelf={book.shelf ? book.shelf : "none"} moveBook={moveBook}/>
+                <BookShelfEditor key={book.id} book={book} moveBook={moveBook}/>
 
               </div>
               <div className="book-title">{book.title}</div>
