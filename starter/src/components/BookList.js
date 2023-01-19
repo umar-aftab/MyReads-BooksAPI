@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Book from "./Book";
 
 const BookList=({booklist,shelf,moveBook})=>{
     return(
-      <div className={(shelf===null ? "search-books-results" : "bookshelf-books")}>
+      <div className="bookshelf-books">
         <ol className="books-grid">
           {
             booklist.map(bk=>
                 <li key={bk.id}>
-                    <Book book={bk} shelf={shelf ===null ? 'none': shelf.shelf } moveBook={moveBook}/>
+                    <Book book={bk} shelf={shelf.shelf} moveBook={moveBook}/>
                 </li>
             )
           }
